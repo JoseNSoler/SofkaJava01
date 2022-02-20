@@ -3,6 +3,8 @@ package Program;
 import Program.Electro.Lavadora;
 import Program.Electro.Electrodomestico;
 import Program.Electro.Television;
+import Program.Productos.Serie;
+import Program.Productos.Videojuego;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -144,7 +146,7 @@ public class StartPoint {
                 while(counter <= unQuinto){
                     // Si es par, agrega el numero a el string lineIzqEven hasta llegar finalNumber/5
                     if(counter % 2 == 0) lineIzqEven = String.format("%s%4d",lineIzqEven, counter);
-                    // Si es impar, agrega el numero a el string lineDerOdd
+                        // Si es impar, agrega el numero a el string lineDerOdd
                     else lineDerOdd = String.format("%s%4d",lineDerOdd, counter);
                     counter++;
                 }
@@ -213,7 +215,7 @@ public class StartPoint {
     /**
      * 8) Funcion que incorpora el punto 8, Lee un inputUser y determina si es un dia de la semana_
      * _e imprime si es un dia laboral
-    */
+     */
     static void option8() {
         boolean condition = true; // Bucle infinito
 
@@ -367,8 +369,8 @@ public class StartPoint {
 
 
             for(char ch: userWord2){
-                 if(userWord1[counter] == ch)diffStr += " ";
-                 else diffStr += ch;
+                if(userWord1[counter] == ch)diffStr += " ";
+                else diffStr += ch;
             }
             System.out.println(diffStr);
             System.out.println("↑ estas son las diferencias con la primera palabra introducida");
@@ -535,7 +537,8 @@ public class StartPoint {
 
 
     /**
-     * 17) Funcion que incorpora el punto 17, Creacion de clase Electrodomestico y 10 posiciones
+     * 17) Funcion que incorpora el punto 17, Creacion de clase Electrodomestico y un array de 10 posiciones
+     * Muestra el precio final de televisores lavadoras y Electrodomesticos en general
      */
     static void option17() {
         boolean condition = true; // Bucle infinito
@@ -545,7 +548,7 @@ public class StartPoint {
             double counterLavadora, counterElectro, counterTelevisor;
             counterLavadora = counterElectro = counterTelevisor = 0;
 
-
+            // Creacion de Array con 10 Posiciones
             Electrodomestico[] arrayElectro = new Electrodomestico[]{
                     new Electrodomestico(), new Electrodomestico(450, 50), new Television(40, false, 100, 20, "Blanco", 'A'),
                     new Television(80, true, 200, 40, "negro", 'F'), new Television(22, false, 150, 25, "Azul", 'B'),
@@ -554,32 +557,110 @@ public class StartPoint {
 
             };
 
+            // Iterar sobre el array, y sumar precio final al contador de su clase
             for(Electrodomestico element: arrayElectro){
                 System.out.println("Elemento" + element.precioFinal());
-                System.out.println("-" + (String)(element.getClass().getCanonicalName().split("\\.")[2]) + "-");
-                if (((String)element.getClass().getCanonicalName().split("\\.")[2]) == "Electrodomestico"){
-                    System.out.println("asdasfsdffsdfsdfsd");
-                    counterElectro += element.precioFinal();
-                }
-                if (((String)element.getClass().getCanonicalName().split("\\.")[2]) == "Lavadora"){
-                    counterLavadora += element.precioFinal();
-                }
-                if (((String)element.getClass().getCanonicalName().split("\\.")[2]) == "Television"){
-                    counterTelevisor += element.precioFinal();
-                }
+                String classer = (String)(element.getClass().getCanonicalName().split("\\.")[2]);
+                System.out.println("-" + classer + "-");
+
+                if (classer.equals("Electrodomestico")) counterElectro += element.precioFinal();
+                if (classer.equals("Lavadora")) counterLavadora += element.precioFinal();
+                if (classer.equals("Television"))  counterTelevisor += element.precioFinal();
             }
 
-            System.out.println("Total de Electrodomesticos:" + (counterElectro + counterTelevisor + counterLavadora) +
-                    "\n Electrodomesticos individuales total: " + counterElectro +
-                    "\n Lavadora total: " + counterLavadora +
-                    "\n Televisor total: " + counterTelevisor);
+            // Printer final con informacion final de cada Electrodomestico
+            System.out.println("Total de Electrodomesticos:" + (counterElectro + counterTelevisor + counterLavadora) + "€" +
+                    "\n Electrodomesticos individuales total: " + counterElectro + "€" +
+                    "\n Lavadora total: " + counterLavadora + "€" +
+                    "\n Televisor total: " + counterTelevisor + "€");
 
+            // Repetir programa
             System.out.println("Repetir Programa? [Si/no]\n");
             if ( (compareInput("Choice")).equals("no")) condition=false;
         }
     }
 
 
+    /**
+     * 18) Funcion que incorpora el punto 18, Creacion de clase Videojuego y Serie extendiendo Metodos Entregable
+     * Crea dos arrays de estas clases, cada uno de 5 posiciones -
+     * Luego, activa el metodo extendido entregar() en algunos elementos de el array y los cuenta
+     * Y finaliza indicando el Videojuego y Serie con mayor cantidad de horas/temporadas usando el metodo CompareTo
+     *
+     */
+    static void option18() {
+        boolean condition = true; // Bucle infinito
+
+        // Condicion para repetir programa si el usuario desea
+        while (condition) {
+            System.out.println("18) Series y peliculas - Se creara un Array de Series y Videojuegos, y se les aplicara cierta logica\n" +
+                    "↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ");
+            int counterEntregadoSerie = 0;
+            int counterEntregadoVideojuego = 0;
+
+            Object serieMayor = new Serie();
+            Object videojuegoMayor = new Videojuego();
+
+
+            // Declaracion de Arrays
+            Serie[] arraySeries = new Serie[]{
+                    new Serie("Hombre", "Twenty Century Man", "Encuentros de la vida", 7),
+                    new Serie("Hombre2", "Twenty Century Man", "Accion", 10),
+                    new Serie("Hombre3", "Twenty Century Man"),
+                    new Serie("Hombre: El origen", "TwentyOne Century Man"),
+                    new Serie()
+            };
+            Videojuego[] arrayVideojuegos = new Videojuego[]{
+                    new Videojuego("The Elder Scrolls: Daggerfall", 850, "Rol Accion", "Bethesda"),
+                    new Videojuego("The Elder Scrolls: Morrowind", 650, "Rol Accion Aventura", "Bethesda"),
+                    new Videojuego("The Elder Scrolls: Oblivion", 750, "MMRO", "Bethesda"),
+                    new Videojuego("The Elder Scrolls: Skyrim", 850, "MMROPG", "Bethesda"),
+                    new Videojuego("The Elder Scrolls: Online", 1000),
+            };
+
+            // Entregar algunos titulos
+            arraySeries[2].entregar();
+            arraySeries[3].entregar();
+            arraySeries[4].entregar();
+
+            arrayVideojuegos[0].entregar();
+            arrayVideojuegos[2].entregar();
+            arrayVideojuegos[4].entregar();
+
+
+            // Recorrer array series, contar numero de entregados y saber serie con mayor numero de temporadas
+            System.out.println("SERIES CREADAS:");
+            for(Serie serie: arraySeries) {
+                System.out.println(serie);
+                if (serie.isEntregado()) counterEntregadoSerie++;
+                serieMayor = serie.compareTo((Object) serieMayor);
+            }
+            System.out.println("---------------------------------------------\nVIDEOJUEGOS CREADOS:");
+            // Recorrer array videojuegos, contar numero de entregados y saber videojuego con mayor numero de horas estimadas
+            for(Videojuego videojuego: arrayVideojuegos) {
+                System.out.println(videojuego);
+                if (videojuego.isEntregado()) counterEntregadoVideojuego++;
+                videojuegoMayor = videojuego.compareTo((Object) videojuegoMayor);
+            }
+
+            System.out.println("---------------------------------------------");
+            System.out.println(
+                    String.format("En el array de Series, tiene un total de %s Series. Existen %s titulos los cuales estan entregados/no disponibles",
+                            arraySeries.length - 1, counterEntregadoSerie));
+            System.out.println("Ademas, la Serie con mayor numero de temporadas es:\n" + serieMayor);
+
+            System.out.println(
+                    String.format("En el array de VideoJuegos, tiene un total de %s VideoJuegos. Existen %s titulos los cuales estan entregados/no disponibles",
+                            arrayVideojuegos.length - 1, counterEntregadoVideojuego));
+            System.out.println("Ademas, el VideoJuego con mayor numero de horas estimadas es:\n" + videojuegoMayor);
+
+            System.out.println("____________________________________________________________...................... . . . . .  .  .  .  .   .   .   .   .");
+
+            // Repetir programa
+            System.out.println("Repetir Programa? [Si/no]\n");
+            if ( (compareInput("Choice")).equals("no")) condition=false;
+        }
+    }
 
 
     // ------------------------------------------------- COMPROBAR INPUT USUARIO --------------------------------------------------------------
@@ -652,11 +733,11 @@ public class StartPoint {
     //-------------------------- MAIN INICIO PROGRAMA -----------------------------------------------------------------
     public static void main(String[] args) {
         boolean condition = true; // Bucle infinito
-        String msjWelcome = "Programa con 18 opciones desarrollado en java\n" +
-                "Porfavor introducir un numero entre 1-18 para entrar a la opcion deseada\n";
+        String msjWelcome = "<<<<<PROGRAMA CON 18 OPCIONES DESARROLLADO EN JAVA>>>>>\n" +
+                "Porfavor introducir un numero entre 1-18 para entrar a la opcion deseada -- Introduzca -1 para terminar programa\n";
 
         // Opciones formateadas para mejor visualizacion de las 18 opciones
-        String options = String.format("%s%63s\n%s%83s\n%s%56s\n%s%36s\n%s%60s\n%s%71s\n%s%78s\n%s%68s\n",
+        String options = String.format("%s%63s\n%s%83s\n%s%56s\n%s%36s\n%s%60s\n%s%71s\n%s%78s\n%s%96s\n",
                 "1-2) Mayor de dos numeros", "3) Area circulo",
                 "4) Calcular IVA", "5-6) Impar y par de 1-100",
                 "7) Ingresar numero y compararlo con 0", "8) Saber dia laboral",
@@ -664,7 +745,7 @@ public class StartPoint {
                 "11) Contador de caracteres y vocales en una cadena de texto", "12) Comparar dos palabras y mostar diferencias",
                 "13) Consultar hora actual (AAAA/MM/DD) (HH:MM:SS)", "14) Contador 2 en 2 hasta 1000, desde un numero",
                 "15) Menu GESTION CINEMATOGRaFICA", "16) Clase Persona y 3 objetos Persona",
-                "17) Crear Array de 10 objetos Electrodomesticos", "18) Series y peliculas");
+                "17) Crear Array de 10 objetos Electrodomesticos", "18) Series y peliculas - Crear Array y cual tiene mas temporadas/horas");
 
 
         while (condition) {
@@ -674,6 +755,9 @@ public class StartPoint {
             int userOpt = (int) compareInput("Int"); // scanner para opcion principal
             switch (userOpt) {
                 // Referirse a la documentacion interna de cada funcion para entender su objetivo
+                case -1:
+                    System.out.println("El programa a finalizado por la opcion -1");
+                    System.exit(0);
                 case 1:
                 case 2:
                     option1_2();
@@ -722,7 +806,7 @@ public class StartPoint {
                     option17();
                     break;
                 case 18:
-                    option17();
+                    option18();
                     break;
                 default:
                     System.out.println("___Opcion invalida");
