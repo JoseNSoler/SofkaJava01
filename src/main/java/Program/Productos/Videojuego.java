@@ -43,7 +43,7 @@ public class Videojuego implements Entregable{
 
     }
 
-    @Override
+    @Override // Formateador para visualizar textualmente el objeto serie
     public String toString(){
         return String.format("VIDEOJUEGO: su nombre es \"%s\" del genero \"%s\", tiene un total estimadas de \"%s\" horas y fue creado por la compañia \"%s\", este titulo esta actualmente entregado=%b",
                 getTitulo(), getGenero(), getHorasEstimadas(), getCompania(), this.entregado);

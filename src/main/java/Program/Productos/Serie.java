@@ -41,7 +41,7 @@ public class Serie implements Entregable {
 
     }
 
-    @Override
+    @Override // Formateador para visualizar textualmente el objeto serie
     public String toString(){
         return String.format("SERIE: su nombre es \"%s\" del genero \"%s\", tiene \"%s\" temporadas y fue creado por \"%s\", este titulo esta entregado=%b",
                 getTitulo(), getGenero(), getNumeroTemporadas(), getCreador(), this.entregado);
