@@ -1,4 +1,22 @@
 
+# Java: Taller Practico de 18 puntos
+
+<p align="center">
+<img src="https://www.sofka.com.co/wp-content/uploads/2021/02/sofkau-logo-horizontal.png">
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white">
+</p>
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/JoseNSoler/PracticaMVC?style=flat-square"
+</p>   
+
+## Descripcion General
+
+Projecto - Repositorio con el proposito de practicar los conceptos básicos aprendidos y estudiados en el módulo de Desarrollo de Software en Java. El codigo se ejecuta y recibe todos los parametros por medio de la consola de comandos (cmd Windows - terminal shell Linux).
+Al final de cada opcion, se preguntara si se desea repetir la opcion seleccionada (Solo respuestas Si/no) - Tambien para detener el programa se debe introducir -1
+
+<p align="center">
   <img src="https://user-images.githubusercontent.com/59320487/154841701-31f2e9f8-bb30-4874-8cc2-a48d32387eee.png">
   </p>
 
@@ -93,16 +111,16 @@ La logica del codigo se encuentra contenida en el archivo src/main/java/Program/
 
 - Sus atributos son: nombre, edad, DNI, sexo (H hombre, M mujer), peso y altura.
 - Se implantarán varios constructores:
-   - Un constructor por defecto.
-   - Un constructor con el nombre, edad y sexo, el resto por defecto.
-   - Un constructor con todos los atributos como parámetro.
+  - Un constructor por defecto.
+  - Un constructor con el nombre, edad y sexo, el resto por defecto.
+  - Un constructor con todos los atributos como parámetro.
 - Se implementaran estos metodos:
-   - calcularIMC(): calculara si la persona está en su peso ideal (peso en kg/(altura^2  en m)), si esta fórmula devuelve un valor menor que 20, la función devuelve un -1, si devuelve un número entre 20 y 25 (incluidos), significa que está por debajo de su peso ideal la función devuelve un 0  y si devuelve un valor mayor que 25 significa que tiene sobrepeso, la función devuelve un 1. Te recomiendo que uses constantes para devolver estos valores.
-   - esMayorDeEdad(): indica si es mayor de edad, devuelve un booleano.
-   - comprobarSexo(char sexo): comprueba que el sexo introducido es correcto. Si no es correcto, sera H. No será visible al exterior.
-   - toString(): devuelve toda la información del objeto.
-   - generaDNI(): genera un número aleatorio de 8 cifras, genera a partir de este su número su letra correspondiente. Este método será invocado cuando se construya el objeto. Puedes dividir el método para que te sea más fácil. No será visible al exterior.
-   - Métodos set de cada parámetro, excepto de DNI.
+  - calcularIMC(): calculara si la persona está en su peso ideal (peso en kg/(altura^2  en m)), si esta fórmula devuelve un valor menor que 20, la función devuelve un -1, si devuelve un número entre 20 y 25 (incluidos), significa que está por debajo de su peso ideal la función devuelve un 0  y si devuelve un valor mayor que 25 significa que tiene sobrepeso, la función devuelve un 1. Te recomiendo que uses constantes para devolver estos valores.
+  - esMayorDeEdad(): indica si es mayor de edad, devuelve un booleano.
+  - comprobarSexo(char sexo): comprueba que el sexo introducido es correcto. Si no es correcto, sera H. No será visible al exterior.
+  - toString(): devuelve toda la información del objeto.
+  - generaDNI(): genera un número aleatorio de 8 cifras, genera a partir de este su número su letra correspondiente. Este método será invocado cuando se construya el objeto. Puedes dividir el método para que te sea más fácil. No será visible al exterior.
+  - Métodos set de cada parámetro, excepto de DNI.
 
 Ahora, el programa ejecutara la siguientes instrucciones:
 - 
@@ -110,7 +128,6 @@ Ahora, el programa ejecutara la siguientes instrucciones:
   <img src="https://user-images.githubusercontent.com/59320487/154866803-bbe2b5ee-b9c6-45a0-bee0-aba07bd022a3.png">
 </p>
 <hr>
-
 
 
 
